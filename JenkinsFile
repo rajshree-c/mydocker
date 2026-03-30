@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('1. Checkout'){
             steps{
-                git 'https://github.com/rajshree-c/mydocker.git'
+              git branch: 'main', url: 'https://github.com/rajshree-c/mydocker.git'
             }
         }
         stage('2. Build Image'){
