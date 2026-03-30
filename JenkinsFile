@@ -1,14 +1,25 @@
 pipeline{
     agent any
     stages{
-        stage('Checkout'){
+        stage('1. Checkout'){
             steps{
-                git url:'https://gitlab.siescoms.in/mca25012/dockernew.git' , branch:'main'
+                git 'https://github.com/rajshree-c/mydocker.git' , branch:'main'
             }
         }
-        stage('Build Image'){
+        stage('2. Build Image'){
             steps{
-                
+                bat 'docker build -t myweb .'
+            }
+        }
+        stage('3. Stop all containers'){
+            steps{
+                bat 'docker stop mycont || exit 0'
+                bat 'docker rm mycont || exit 0'
+            }
+        }
+        stage('4. Run the image -containerize'){
+            steps{
+                bat 'docker run -d -p 8000:80 --name mycont myweb'
             }
         }
     }
