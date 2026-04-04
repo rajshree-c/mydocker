@@ -1,0 +1,9 @@
+{
+  "name": "docker-node-app",
+  "version": "1.0.0",
+  "description": "Simple Node app for Docker + Jenkins",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
